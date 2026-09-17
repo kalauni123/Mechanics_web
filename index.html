@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Physics MCQ Portal</title>
+    
+    <!-- Link to the CSS folder -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], packages: {'[+]': ['physics']} },
+            startup: { typeset: false } 
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">⚛️ Scalable Physics Examination Portal</div>
+    </header>
+
+    <main class="container">
+        <!-- Setup Screen -->
+        <section id="setupScreen" class="card">
+            <h1>Configure Examination</h1>
+            <div class="form-grid">
+                <div>
+                    <label>Subject</label>
+                    <select id="subjectSelect" class="input-full"></select>
+                </div>
+                <div>
+                    <label>Chapter</label>
+                    <select id="chapterSelect" class="input-full"></select>
+                </div>
+            </div>
+            <button id="startBtn" class="btn btn-primary" style="width:100%; margin-top:1.5rem;">Start 20-Question Exam</button>
+            <p id="errorMsg" class="error-text"></p>
+        </section>
+
+        <!-- Active Exam Screen -->
+        <section id="examScreen" class="card hidden">
+            <div class="exam-header">
+                <span id="questionCounter">Q 1 / 20</span>
+                <span id="timer" class="timer-text">20:00</span>
+            </div>
+            
+            <div id="questionText" class="question-text"></div>
+            <div id="optionsContainer" class="options-grid"></div>
+
+            <div class="nav-grid">
+                <button id="prevBtn" class="btn">← Previous</button>
+                <button id="nextBtn" class="btn btn-primary">Next →</button>
+            </div>
+            <button id="submitBtn" class="btn btn-danger" style="width:100%; margin-top:1.5rem;">Submit Examination</button>
+        </section>
+
+        <!-- Result Screen -->
+        <section id="resultScreen" class="card hidden">
+            <h2>Examination Complete</h2>
+            <div class="stats-grid">
+                <div class="stat-box">Final Score<br><strong id="finalScore" class="text-primary"></strong></div>
+                <div class="stat-box">Accuracy<br><strong id="accuracyScore"></strong>%</div>
+                <div class="stat-box">Correct<br><strong id="correctCount" class="text-success"></strong></div>
+            </div>
+            <div id="reviewContainer"></div>
+            <button id="homeBtn" class="btn btn-primary" style="width:100%; margin-top:2rem;">Return to Dashboard</button>
+        </section>
+    </main>
+
+    <!-- LOAD STANDARD SCRIPTS IN ORDER -->
+    <script src="database/subjectRegistry.js"></script>
+    <script src="database/mechanics_ch1.js"></script>
+    <!-- New chapter added here -->
+    <script src="database/mechanics_ch2.js"></script> 
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
