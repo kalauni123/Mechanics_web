@@ -26,7 +26,7 @@
     --warning: #d97706;
     --warning-bg: #fef3c7;
 
-    /* Ultra HD Shadows */
+    /* Ultra HD Shadows (For Desktop) */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
@@ -51,7 +51,7 @@ body {
 
 /* Glassmorphism Header */
 .header { 
-    background: rgba(255, 255, 255, 0.85); 
+    background: rgba(255, 255, 255, 0.95); 
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border); 
     padding: 1.25rem 1rem; 
@@ -77,7 +77,7 @@ body {
     padding: 0 1rem; 
 }
 
-/* Premium Floating Cards */
+/* Premium Floating Cards (Desktop) */
 .card { 
     background: var(--card); 
     padding: 2.5rem; 
@@ -229,14 +229,9 @@ h1, h2 {
 .option:hover { 
     border-color: var(--primary); 
     background: #f8fafc;
-    transform: translateX(4px);
 }
 
-.option.selected { 
-    border-color: var(--primary); 
-    background: var(--primary-light); 
-}
-
+.option.selected { border-color: var(--primary); background: var(--primary-light); }
 .option.correct { border-color: var(--success-border); background: var(--success-bg); color: #065f46; }
 .option.wrong { border-color: var(--danger-border); background: var(--danger-bg); color: #991b1b; }
 
@@ -256,14 +251,14 @@ h1, h2 {
 .option.correct .option-label { background: var(--success); color: white; }
 .option.wrong .option-label { background: var(--danger); color: white; }
 
-.nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+.nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
 
 /* Stunning Results & Review Section */
 .stats-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
     gap: 1.5rem; 
-    margin-bottom: 3rem; 
+    margin-bottom: 2rem; 
     text-align: center; 
 }
 
@@ -309,10 +304,8 @@ h1, h2 {
     overflow-wrap: break-word;
 }
 
-/* MathJax Specific Scaling */
 .MathJax { font-size: 1.1em !important; }
 
-/* MATH OVERFLOW FIX: Allows long equations to swipe left/right on mobile */
 mjx-container[display="true"] {
     overflow-x: auto;
     overflow-y: hidden;
@@ -320,97 +313,140 @@ mjx-container[display="true"] {
     padding-bottom: 0.5rem;
 }
 
-
 /* =========================================
-   📱 MOBILE-FIRST OPTIMIZATIONS 
+   📱 100% EDGE-TO-EDGE MOBILE OPTIMIZATIONS 
    ========================================= */
 @media (max-width: 768px) {
     
-    /* 1. Header Reduction */
+    /* 1. Remove all body backgrounds and make it flat white for the app feel */
+    body {
+        background-color: var(--card);
+        background-image: none;
+    }
+
+    /* 2. Shrink Header drastically to save space */
     .header {
-        padding: 0.75rem 0.5rem;
+        padding: 0.5rem;
+        border-bottom: 1px solid var(--border);
+        box-shadow: none;
     }
     .header-inner {
-        font-size: 1rem; /* Smaller header text */
+        font-size: 1rem; 
     }
 
-    /* 2. Full Screen Cover (Remove outer container margins) */
+    /* 3. 100% Edge-to-Edge Container */
     .container {
-        margin: 0.5rem auto;
-        padding: 0 0.5rem; /* Maximize width */
+        margin: 0;
+        padding: 0; 
+        max-width: 100%;
+        width: 100%;
     }
     
+    /* Remove card borders, radius, and shadows for full-screen usage */
     .card {
-        padding: 1.25rem 1rem; /* Reduce inner padding to save space */
-        border-radius: 12px;
+        padding: 1rem 0.5rem; 
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
     }
 
-    /* 3. Button adjustments for touch */
-    .btn {
-        padding: 0.75rem 1rem;
-        font-size: 1rem;
-    }
-    .nav-grid {
-        gap: 0.75rem;
-        margin-top: 1.5rem;
+    /* 4. Tighter Exam Header */
+    .exam-header {
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        font-size: 0.95rem;
     }
 
-    /* 4. Exam Screen Typography (Kept highly legible) */
+    /* 5. Smaller Question Text */
     .question-text {
-        font-size: 1.15rem; /* Slightly smaller for mobile */
+        font-size: 1.05rem; /* Shrunk for long math */
+        margin-bottom: 1rem;
+        padding: 0 0.25rem;
+    }
+    
+    /* 6. Compact Options */
+    .options-grid {
+        gap: 0.5rem;
+    }
+    .option {
+        padding: 0.75rem 0.5rem;
+        gap: 0.5rem;
+        font-size: 0.95rem; /* Smaller option text */
+        border-radius: 8px;
+    }
+    .option-label {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+        border-radius: 6px;
+    }
+
+    /* 7. Compact Navigation Buttons */
+    .nav-grid {
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        padding: 0 0.25rem;
+    }
+    .btn {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.95rem;
+        border-radius: 8px;
+    }
+
+    /* =========================================
+       POST-SUBMISSION COMPACT REVIEW SCREEN
+       ========================================= */
+    
+    .stats-grid {
+        grid-template-columns: 1fr; /* Stack results */
+        gap: 0.5rem;
         margin-bottom: 1.5rem;
     }
-    
-    .option {
-        padding: 1rem 0.75rem;
-        gap: 0.75rem;
-        font-size: 1rem;
-    }
-
-    /* 5. SMALLER POST-SUBMISSION REVIEW FONTS */
-    /* This ensures detailed answers are small enough to read easily on mobile */
-    .review-item {
-        padding: 1.25rem 1rem;
-        margin-top: 1.25rem;
-    }
-    
-    /* Reduce question text in review */
-    .review-item p {
-        font-size: 0.95rem; 
-    }
-    
-    /* Reduce option text in review */
-    .review-item .option {
-        font-size: 0.9rem;
-        padding: 0.75rem;
-    }
-    
-    .review-item .option-label {
-        min-width: 30px;
-        height: 30px;
-        font-size: 0.9rem;
-    }
-
-    /* Reduce explanation box text in review */
-    .explanation-box {
-        font-size: 0.9rem;
-        padding: 1rem;
-    }
-
-    /* Reduce MathJax size exclusively inside the review section on mobile */
-    .review-item .MathJax {
-        font-size: 0.95em !important;
-    }
-
-    /* Result Stats Scaling */
-    .stats-grid {
-        grid-template-columns: 1fr; /* Stack results vertically on very small screens */
-        gap: 0.75rem;
-    }
     .stat-box {
-        padding: 1rem;
+        padding: 0.75rem;
+        border-radius: 8px;
+        font-size: 0.8rem;
     }
     .stat-box strong {
-        font-size: 2rem;
+        font-size: 1.75rem;
+    }
+
+    /* Super tight review items using 100% width */
+    .review-item {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        box-shadow: none;
+    }
+    
+    /* Tiny font size for review question */
+    .review-item p {
+        font-size: 0.9rem; 
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Tiny font size for review options */
+    .review-item .option {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+
+    /* Tiny font size for explanations */
+    .explanation-box {
+        margin-top: 0.75rem;
+        padding: 0.75rem;
+        font-size: 0.85rem;
+        border-radius: 0 8px 8px 0;
+        border-left-width: 4px;
+    }
+
+    /* Explicitly shrink MathJax only on mobile so complex equations fit */
+    .MathJax {
+        font-size: 0.95em !important;
+    }
+    .review-item .MathJax {
+        font-size: 0.9em !important; /* Even smaller in review */
     }
 }
