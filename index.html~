@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Physics MCQ Portal</title>
     
-    <!-- Link to the CSS folder -->
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- MathJax Configuration -->
     <script>
         window.MathJax = {
             tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], packages: {'[+]': ['physics']} },
@@ -27,24 +25,29 @@
         <section id="setupScreen" class="card">
             <h1>Configure Examination</h1>
             <div class="form-grid">
-                <div>
-                    <label>Subject</label>
-                    <select id="subjectSelect" class="input-full"></select>
+                <!-- Static Active Subject Label -->
+                <div style="margin-bottom: 0.5rem;">
+                    <span class="subject-label">Active Subject</span>
+                    <div class="subject-title">Classical Mechanics</div>
                 </div>
+                
+                <!-- Examination Scope -->
                 <div>
-                    <label>Chapter</label>
+                    <label style="font-weight: 600; color: var(--text-main);">Examination Scope</label>
                     <select id="chapterSelect" class="input-full"></select>
                 </div>
             </div>
-            <button id="startBtn" class="btn btn-primary" style="width:100%; margin-top:1.5rem;">Start 20-Question Exam</button>
+            <!-- Updated Button Text -->
+            <button id="startBtn" class="btn btn-primary" style="width:100%; margin-top:1rem;">Start 50-Question Exam</button>
             <p id="errorMsg" class="error-text"></p>
         </section>
 
         <!-- Active Exam Screen -->
         <section id="examScreen" class="card hidden">
             <div class="exam-header">
-                <span id="questionCounter">Q 1 / 20</span>
-                <span id="timer" class="timer-text">20:00</span>
+                <!-- Updated Counter and Timer defaults -->
+                <span id="questionCounter">Q 1 / 50</span>
+                <span id="timer" class="timer-text">45:00</span>
             </div>
             
             <div id="questionText" class="question-text"></div>
@@ -70,12 +73,20 @@
         </section>
     </main>
 
-    <!-- LOAD STANDARD SCRIPTS IN ORDER -->
+    <!-- LOAD REGISTRY AND DATABASES FIRST -->
     <script src="database/subjectRegistry.js"></script>
     <script src="database/mechanics_ch1.js"></script>
-    <!-- New chapter added here -->
-    <script src="database/mechanics_ch2.js"></script> 
+    <script src="database/mechanics_ch2.js"></script>
+    <script src="database/mechanics_ch3.js"></script>
+    <script src="database/mechanics_ch4.js"></script>
+    <script src="database/mechanics_ch5.js"></script>
+    <script src="database/mechanics_ch6.js"></script>
+    <script src="database/mechanics_ch7.js"></script>
+    <script src="database/mechanics_ch8.js"></script>
+    <script src="database/mechanics_ch9.js"></script>
+    <script src="database/mechanics_ch10.js"></script>
     
+    <!-- APPLICATION LOGIC LAST -->
     <script src="js/app.js"></script>
 </body>
 </html>
